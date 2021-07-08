@@ -47,4 +47,26 @@
       font-size: 1em;
     }
   }
+
+  .metadata {
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+
+      > span {
+        margin: 0 2em 2em 0;
+      }
+
+      dt,
+      dd {
+        margin: 0;
+      }
+
+      dt {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.8333em;
+      }
+    }
+  }
 }

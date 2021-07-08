@@ -35,6 +35,17 @@ class Item extends Component {
     return null
   }
 
+  metadataPair = (key, value) => {
+    if (value) {
+      return (
+        <span>
+        <dt>{key}</dt>
+        <dd>{value}</dd>
+      </span>
+      )
+    }
+  }
+
   componentDidMount() {
     const {params: {id}} = this.props.match;
     this.getArtwork(id);
@@ -50,7 +61,7 @@ class Item extends Component {
 
   render() {
     if (this.state.response) {
-      const {id, title, artist_display, thumbnail, image_id} = this.state.response;
+      const {id, title, artist_display, thumbnail, image_id, date_display, dimensions, provenance_title, style_title} = this.state.response;
       return (
         <main className="item" id={`item-${id}`}>
           <div className="masthead">
@@ -76,7 +87,12 @@ class Item extends Component {
               </a>
             </header>
             <div className="metadata">
-              ...metadata
+              <dl>
+                {this.metadataPair('Date', date_display)}
+                {this.metadataPair('Dimensions', dimensions)}
+                {this.metadataPair('Provenance', provenance_title)}
+                {this.metadataPair('Style', style_title)}
+              </dl>
             </div>
           </div>
         </main>
@@ -90,3 +106,5 @@ class Item extends Component {
 }
 
 export default Item;
+
+
