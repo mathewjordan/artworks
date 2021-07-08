@@ -9,6 +9,7 @@ module.exports = {
   plugins: [],
   devServer: {
     contentBase: path.resolve(__dirname, '..', './dist'),
+    historyApiFallback: true,
   },
   devtool: 'source-map',
 };
