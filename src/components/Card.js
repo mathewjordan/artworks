@@ -12,12 +12,19 @@ class Card extends Component {
   render() {
     const {id, title, artist_display, thumbnail, image_id} = this.props.data;
 
+    let alt = title;
+    let placeholder = null;
+    if (thumbnail) {
+      alt = thumbnail.alt_text;
+      placeholder = thumbnail.lqip;
+    }
+
     return (
       <Link to={`/item/${id}`} className="card">
-        <Figure alt={thumbnail.alt_text}
+        <Figure alt={alt}
                 title={title}
                 artist={artist_display}
-                placeholder={thumbnail.lqip}
+                placeholder={placeholder}
                 image_id={image_id}
                 size="!400,400"
                 ratio={1/1} />

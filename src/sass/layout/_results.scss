@@ -65,5 +65,14 @@ main.results {
         }
       }
     }
+
+    &:hover,
+    &:focus {
+      img {
+        box-shadow: $box-shadow-focus;
+      }
+
+      color: $secondary;
+    }
   }
 }
