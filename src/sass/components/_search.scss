@@ -1,0 +1,54 @@
+#artworks .sticky {
+  z-index: 1;
+}
+
+.search {
+  background-color: $primary;
+  padding: 1em 3em;
+  box-shadow: $box-shadow;
+  display: flex;
+  position: relative;
+
+  label {
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 1em;
+    font-size: 1.5rem;
+    letter-spacing: -0.05em;
+    font-family: $sans;
+    color: white;
+  }
+
+  input {
+    padding: 0.5em 1em;
+    font-size: 1.25em;
+    flex-grow: 1;
+    margin: 0;
+    border: none;
+    border-radius: 30px;
+    transition: $transition;
+
+    &:focus {
+      box-shadow: $box-shadow-focus;
+    }
+  }
+
+  button {
+    font-size: 1em;
+    font-family: $sans;
+    font-weight: 700;
+    background-color: $secondary;
+    color: white;
+    border: none;
+    background-image: none;
+    padding: 0 1em;
+    position: absolute;
+    right: 3.15em;
+    top: 1.15em;
+    height: 2.5em;
+    border-radius: 30px;
+    text-transform: uppercase;
+  }
+}

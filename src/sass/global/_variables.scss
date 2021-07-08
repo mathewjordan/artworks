@@ -3,12 +3,14 @@ Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
 $serif: 'Halant', Georgia, serif;
 
-$primary: #221d22;
-$secondary: #0b58a5;
-$accent: #583646;
+$primary: #2f2b2f;
+$secondary: #02458c;
+$accent: #531732;
 $muted: #f1f0ef;
 $offwhite: #FAF9F9;
 
 $box-shadow: 4px 4px 8px rgba($primary, 0.15);
 $box-shadow-focus: 6px 6px 12px rgba($primary, 0.25);
 $box-shadow-slim: 2px 2px 5px rgba($primary, 0.15);
+
+$transition: all 150ms ease-in-out;

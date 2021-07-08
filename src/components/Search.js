@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Sticky from "react-sticky-el"
 
 class Search extends Component {
   constructor(props) {
@@ -24,20 +25,22 @@ class Search extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="search-input">
-          Search
-        </label>
-        <input
-          ref={this.searchElement}
-          value={this.state.value}
-          id="search-input"
-          type="search"
-          placeholder="Search for Items"
-          onChange={this.handleChange}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <Sticky>
+        <form className="search" onSubmit={this.handleSubmit}>
+          <label htmlFor="search-input">
+            Search
+          </label>
+          <input
+            ref={this.searchElement}
+            value={this.state.value}
+            id="search-input"
+            type="search"
+            placeholder="Find Artwork by Title"
+            onChange={this.handleChange}
+          />
+          <button type="submit">Go</button>
+        </form>
+      </Sticky>
     );
   }
 }

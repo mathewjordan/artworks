@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const endpoint = 'https://api.artic.edu/api/v1/artworks/search?query[term][is_public_domain]=true';
 const fields = 'id,title,artist_display,thumbnail,image_id';
-const limit = 20;
+const limit = 12;
 
 class Results extends Component {
   constructor(props) {
@@ -44,7 +44,8 @@ class Results extends Component {
           if(query !== this.props.query) {
             this.setState({
               response: data.data,
-              query: this.props.query
+              query: this.props.query,
+              previousPage: page
             });
           } else {
             this.setState({
