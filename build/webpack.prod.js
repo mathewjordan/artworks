@@ -1,14 +1,20 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
-  optimization: {
-    minimize: true,
-    concatenateModules: false,
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM"
   },
-  plugins: [],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
   devServer: {
-    contentBase: path.resolve(__dirname, '..', './dist'),
+    contentBase: path.resolve(__dirname, '..', './src'),
+    historyApiFallback: true,
+    watchContentBase: true,
+    hot: true,
   },
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
 };
