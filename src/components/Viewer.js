@@ -25,6 +25,9 @@ class Viewer extends Component {
             windows: [{
               manifestId: manifest
             }],
+            workspace: {
+              showZoomControls: true,
+            },
             workspaceControlPanel: {
               enabled: false,
             },
