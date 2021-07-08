@@ -42,7 +42,9 @@ class Results extends Component {
         .then(response => response.json())
         .then(data => {
           if(query !== this.props.query) {
+            console.log(data)
             this.setState({
+              total: data.pagination.total,
               response: data.data,
               query: this.props.query,
               previousPage: page
@@ -69,6 +71,16 @@ class Results extends Component {
     }
   }
 
+  resultsLabel = (query, total) => {
+    if (total) {
+      let label = `Found ${total} Results.`;
+      if (query !== '') {
+        label = `Found ${total} Results for "${query}".`;
+      }
+      return <span>{label}</span>
+    }
+  }
+
   componentDidMount() {
     window.addEventListener('scroll', this.infiniteScroll);
     this.getArtworks(this.state.page);
@@ -79,10 +91,16 @@ class Results extends Component {
   }
 
   render() {
-    if (this.state.response) {
+
+    let { response, query, total } = this.state;
+
+    if (response) {
       return (
         <main className="results">
-          {this.mapCards(this.state.response)}
+          {this.resultsLabel(query, total)}
+          <div className="items">
+            {this.mapCards(response)}
+          </div>
         </main>
       );
     } else {
