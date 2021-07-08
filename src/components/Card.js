@@ -19,7 +19,8 @@ class Card extends Component {
                 artist={artist_display}
                 placeholder={thumbnail.lqip}
                 image_id={image_id}
-                size="!400,400" />
+                size="!400,400"
+                ratio={1/1} />
       </Link>
     );
   }

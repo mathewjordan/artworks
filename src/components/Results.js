@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const endpoint = 'https://api.artic.edu/api/v1/artworks/search?query[term][is_public_domain]=true';
 const fields = 'id,title,artist_display,thumbnail,image_id';
-const limit = 10;
+const limit = 20;
 
 class Results extends Component {
   constructor(props) {
@@ -11,11 +11,13 @@ class Results extends Component {
 
     this.state ={
       query: null,
-      response: null
+      response: [],
+      page: 0
     }
   }
 
   mapCards = (items) => {
+    console.log(items)
     return items.map((item, index) => {
       return (
         <Card key={index}
@@ -24,9 +26,10 @@ class Results extends Component {
     });
   }
 
-  getArtworks = () => {
-    if(this.state.query !== this.props.query) {
-      let uri = endpoint + '&fields=' + fields + '&limit=' + limit;
+  getArtworks = (page) => {
+    const {query, previousPage} = this.state;
+    if((query !== this.props.query) || (page !== previousPage)) {
+      let uri = endpoint + '&fields=' + fields + '&limit=' + limit + '&page=' + page;
       if (this.props.query !== '') {
         uri = uri + '&q=' + this.props.query;
       }
@@ -38,30 +41,47 @@ class Results extends Component {
       })
         .then(response => response.json())
         .then(data => {
-          this.setState({
-            response: data,
-            query: this.props.query
-          });
+          if(query !== this.props.query) {
+            this.setState({
+              response: data.data,
+              query: this.props.query
+            });
+          } else {
+            this.setState({
+              response: [...this.state.response,...data.data],
+              previousPage: page
+            });
+          }
         })
         .catch(err => console.error(this.props.url, err.toString()));
+    }
+  }
 
-      return null
+  infiniteScroll = () => {
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      let nextPage = this.state.page;
+      nextPage++;
+
+      this.setState({
+        page: nextPage
+      });
     }
   }
 
   componentDidMount() {
-    this.getArtworks();
+    window.addEventListener('scroll', this.infiniteScroll);
+    this.getArtworks(this.state.page);
   }
 
   componentDidUpdate() {
-    this.getArtworks();
+    this.getArtworks(this.state.page);
   }
 
   render() {
     if (this.state.response) {
       return (
         <main className="results">
-          {this.mapCards(this.state.response.data)}
+          {this.mapCards(this.state.response)}
         </main>
       );
     } else {
