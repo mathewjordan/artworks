@@ -1,0 +1,50 @@
+.back {
+  @extend .button;
+
+  background-color: $secondary;
+  color: white !important;
+  position: absolute;
+  z-index: 1;
+  margin: 3em;
+}
+
+.masthead {
+ position: relative;
+}
+
+.content {
+  padding: 2em 3em;
+
+  header {
+    display: flex;
+    margin-bottom: 2em;
+
+    > div:first-child {
+      flex-grow: 1;
+    }
+
+    .expand {
+      @extend .button;
+
+      display: flex;
+      height: auto;
+      align-self: flex-start;
+      background-color: $accent;
+      color: white;
+      font-size: 1em !important;
+      margin-top: 0.5em;
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: $serif;
+      letter-spacing: -0.05em;
+      margin: 0 0 0.25em;
+    }
+
+    span {
+      display: block;
+      font-size: 1em;
+    }
+  }
+}
