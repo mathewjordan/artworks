@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Card from "./Card";
 
-const endpoint = 'https://api.artic.edu/api/v1/artworks';
+const endpoint = 'https://api.artic.edu/api/v1/artworks/search?query[term][is_public_domain]=true';
+const fields = 'id,title,artist_display,thumbnail,image_id';
+const limit = 10;
 
 class Results extends Component {
   constructor(props) {
@@ -17,18 +19,17 @@ class Results extends Component {
     return items.map((item, index) => {
       return (
         <Card key={index}
-              title={item.title} />
+              data={item} />
       )
     });
   }
 
   getArtworks = () => {
     if(this.state.query !== this.props.query) {
-      let uri = endpoint;
+      let uri = endpoint + '&fields=' + fields + '&limit=' + limit;
       if (this.props.query !== '') {
-        uri = uri + '/search?q=' + this.props.query;
+        uri = uri + '&q=' + this.props.query;
       }
-      console.log(this.props.query)
       fetch(uri, {
         headers : {
           'Content-Type': 'application/json',
