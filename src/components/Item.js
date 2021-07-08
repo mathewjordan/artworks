@@ -65,7 +65,6 @@ class Item extends Component {
       return (
         <main className="item" id={`item-${id}`}>
           <div className="masthead">
-            <Link to="/" className="back">Back to Search</Link>
             <Figure alt={thumbnail.alt_text}
                     placeholder={thumbnail.lqip}
                     image_id={image_id}
@@ -79,12 +78,15 @@ class Item extends Component {
                 <h1>{title}</h1>
                 <span>{artist_display}</span>
               </div>
-              <a href="#"
-                 className="expand"
-                 onKeyDown={this.handleViewer}
-                 onClick={this.handleViewer}>
-                {this.state.viewer ? 'Close Viewer' : 'Expand in Viewer'}
-              </a>
+              <div className="item-controls">
+                <a href="#"
+                   className="expand"
+                   onKeyDown={this.handleViewer}
+                   onClick={this.handleViewer}>
+                  {this.state.viewer ? 'Close Viewer' : 'Expand in Viewer'}
+                </a>
+                <Link to="/" className="back">Back to Search</Link>
+              </div>
             </header>
             <div className="metadata">
               <dl>

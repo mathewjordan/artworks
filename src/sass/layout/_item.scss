@@ -1,12 +1,4 @@
-.back {
-  @extend .button;
 
-  background-color: $secondary;
-  color: white !important;
-  position: absolute;
-  z-index: 1;
-  margin: 3em;
-}
 
 .masthead {
  position: relative;
@@ -23,23 +15,49 @@
       flex-grow: 1;
     }
 
+    .item-controls {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+
+    .back,
     .expand {
       @extend .button;
 
-      display: flex;
+      display: block;
       height: auto;
       align-self: flex-start;
       background-color: $secondary;
       color: white;
       font-size: 1em !important;
-      margin-top: 0.5em;
       flex-shrink: 0;
+      margin-bottom: 1em;
+      white-space: nowrap;
+      text-align: center;
+      transition: $transition;
+      box-shadow: none;
+      width: calc(100% - 2em);
+
+      &:hover,
+      &:focus {
+        box-shadow: $box-shadow;
+      }
+    }
+
+    .back {
+      background-color: $accent;
     }
 
     h1 {
       font-family: $serif;
       letter-spacing: -0.05em;
       margin: 0 0 0.25em;
+      line-height: 1.25em;
+      padding-right: 2em;
     }
 
     span {
