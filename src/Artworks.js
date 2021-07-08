@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import Search from "./components/Search";
 import Results from "./components/Results";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Item from "./components/Item";
 
 class Artworks extends Component {
   constructor(props) {
@@ -19,12 +25,17 @@ class Artworks extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Search onSubmit={this.handleQuery}/>
-        <div className="content">
-          <Results query={this.state.query} />
+      <Router>
+        <div className="container">
+            <Switch>
+              <Route path="/item/:id" component={Item} />
+              <Route exact path="/">
+                <Search onSubmit={this.handleQuery}/>
+                <Results query={this.state.query} />
+              </Route>
+            </Switch>
         </div>
-      </div>
+      </Router>
     );
   }
 }
