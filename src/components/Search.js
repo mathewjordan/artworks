@@ -28,7 +28,7 @@ class Search extends Component {
       <Sticky>
         <form className="search" onSubmit={this.handleSubmit}>
           <label htmlFor="search-input">
-            Search
+            Search Artworks
           </label>
           <input
             ref={this.searchElement}

@@ -22,8 +22,8 @@
     padding-right: 1em;
     font-size: 1.5rem;
     letter-spacing: -0.05em;
-    font-family: $sans;
     color: white;
+    font-family: $serif;
 
     @include breakpoints(xs) {
       font-size: 1.25rem;

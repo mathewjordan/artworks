@@ -34,7 +34,7 @@ main.results {
       flex-direction: column;
 
       figcaption {
-        margin-top: 0.5em;
+        margin-top: 1em;
         padding-right: 2em;
         line-height: 1.45em;
 
@@ -49,6 +49,8 @@ main.results {
             font-weight: 700;
             margin-bottom: 0.25em;
             letter-spacing: -0.0125em;
+            font-family: $serif;
+            line-height: 1.25em;
 
             @include breakpoints(xs) {
               font-size: 1.25em;

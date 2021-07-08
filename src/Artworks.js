@@ -27,10 +27,10 @@ class Artworks extends Component {
     return (
       <Router>
         <div className="container">
+            <Search onSubmit={this.handleQuery}/>
             <Switch>
               <Route path="/item/:id" component={Item} />
               <Route exact path="/">
-                <Search onSubmit={this.handleQuery}/>
                 <Results query={this.state.query} />
               </Route>
             </Switch>
