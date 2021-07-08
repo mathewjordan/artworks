@@ -9,6 +9,11 @@
   display: flex;
   position: relative;
 
+  @include breakpoints(xs) {
+    padding: 0.5em 1em;
+    flex-direction: column;
+  }
+
   label {
     font-weight: 700;
     display: flex;
@@ -19,6 +24,12 @@
     letter-spacing: -0.05em;
     font-family: $sans;
     color: white;
+
+    @include breakpoints(xs) {
+      font-size: 1.25rem;
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
   }
 
   input {
@@ -50,5 +61,11 @@
     height: 2.5em;
     border-radius: 30px;
     text-transform: uppercase;
+
+    @include breakpoints(xs) {
+      right: 1.15em;
+      top: unset;
+      bottom: 0.65em;
+    }
   }
 }

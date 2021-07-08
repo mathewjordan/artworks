@@ -3,6 +3,10 @@ main.results {
   flex-wrap: wrap;
   padding: 1.5em;
 
+  @include breakpoints(xs) {
+    padding: 0;
+  }
+
   a.card,
   a.card:visited {
     width: calc(25% - 3em);
@@ -11,6 +15,19 @@ main.results {
     margin: 1.5em;
     text-decoration: none;
     color: $primary;
+
+    @include breakpoints(md) {
+      width: calc(33.33% - 3em);
+    }
+
+    @include breakpoints(sm) {
+      width: calc(50% - 3em);
+    }
+
+    @include breakpoints(xs) {
+      width: calc(100%);
+      margin: 0;
+    }
 
     figure {
       display: flex;
@@ -21,6 +38,10 @@ main.results {
         padding-right: 2em;
         line-height: 1.45em;
 
+        @include breakpoints(xs) {
+          padding: 0.5em 1em 2em;
+        }
+
         span {
           display: block;
 
@@ -28,6 +49,10 @@ main.results {
             font-weight: 700;
             margin-bottom: 0.25em;
             letter-spacing: -0.0125em;
+
+            @include breakpoints(xs) {
+              font-size: 1.25em;
+            }
           }
 
           &.artist {
