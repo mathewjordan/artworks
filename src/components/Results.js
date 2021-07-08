@@ -8,6 +8,7 @@ class Results extends Component {
     super(props);
 
     this.state ={
+      query: null,
       response: null
     }
   }
@@ -21,27 +22,38 @@ class Results extends Component {
     });
   }
 
-  getArtworks = (uri) => {
-    fetch(uri, {
-      headers : {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+  getArtworks = () => {
+    if(this.state.query !== this.props.query) {
+      let uri = endpoint;
+      if (this.props.query !== '') {
+        uri = uri + '/search?q=' + this.props.query;
       }
-    })
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          response: data
-        });
+      console.log(this.props.query)
+      fetch(uri, {
+        headers : {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
       })
-      .catch(err => console.error(this.props.url, err.toString()));
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            response: data,
+            query: this.props.query
+          });
+        })
+        .catch(err => console.error(this.props.url, err.toString()));
 
-    return null
+      return null
+    }
   }
 
   componentDidMount() {
-    const request = endpoint;
-    this.getArtworks(request);
+    this.getArtworks();
+  }
+
+  componentDidUpdate() {
+    this.getArtworks();
   }
 
   render() {

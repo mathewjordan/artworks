@@ -6,20 +6,20 @@ class Search extends Component {
     this.searchElement = React.createRef();
 
     this.state = {
-      query: ''
+      value: ''
     }
   }
 
   handleChange = () => {
     this.setState(({
-      query: this.searchElement.current.value
+      value: this.searchElement.current.value
     }))
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
     const query = this.searchElement.current.value
-    console.log(query)
+    this.props.onSubmit(query);
   }
 
   render() {
@@ -30,7 +30,7 @@ class Search extends Component {
         </label>
         <input
           ref={this.searchElement}
-          value={this.state.query}
+          value={this.state.value}
           id="search-input"
           type="search"
           placeholder="Search for Items"
