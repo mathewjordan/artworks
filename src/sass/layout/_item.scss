@@ -7,9 +7,17 @@
 .content {
   padding: 2em 3em;
 
+  @include breakpoints(sm) {
+    padding: 1.5em;
+  }
+
   header {
     display: flex;
     margin-bottom: 2em;
+
+    @include breakpoints(xs, sm) {
+      flex-direction: column;
+    }
 
     > div:first-child {
       flex-grow: 1;
@@ -22,6 +30,14 @@
       align-items: center;
       flex-grow: 1;
       flex-shrink: 0;
+
+      @include breakpoints(sm) {
+        flex-direction: row;
+      }
+
+      @include breakpoints(xs, sm) {
+        margin-top: 2em;
+      }
     }
 
     .back,
@@ -42,6 +58,10 @@
       box-shadow: none;
       width: calc(100% - 2em);
 
+      @include breakpoints(sm) {
+        width: calc(50% - 3em);
+      }
+
       &:hover,
       &:focus {
         box-shadow: $box-shadow;
@@ -50,6 +70,10 @@
 
     .back {
       background-color: $accent;
+
+      @include breakpoints(sm) {
+        margin-left: 2em;
+      }
     }
 
     h1 {
@@ -58,6 +82,10 @@
       margin: 0 0 0.25em;
       line-height: 1.25em;
       padding-right: 2em;
+
+      @include breakpoints(sm) {
+        padding-right: 0;
+      }
     }
 
     span {
