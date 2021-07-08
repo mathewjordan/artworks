@@ -2,6 +2,10 @@
 
 .masthead {
  position: relative;
+
+  figure img {
+    object-fit: contain;
+  }
 }
 
 .content {
