@@ -10,7 +10,7 @@ class Card extends Component {
   }
 
   render() {
-    const {alt, placeholder, image_id, size} = this.props;
+    const {alt, title, artist, placeholder, image_id, size} = this.props;
 
     return (
       <figure>
@@ -18,6 +18,10 @@ class Card extends Component {
         <span style={{
           backgroundImage: `url(${placeholder})`
         }}></span>
+        <figcaption>
+          <span className="title">{title}</span>
+          <span className="artist">{artist}</span>
+        </figcaption>
       </figure>
     );
   }

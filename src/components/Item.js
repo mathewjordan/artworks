@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Figure from "./Figure";
 
 const endpoint = 'https://api.artic.edu/api/v1/artworks/';
@@ -9,7 +9,7 @@ class Item extends Component {
   constructor(props) {
     super(props);
 
-    this.state ={
+    this.state = {
       response: null
     }
   }
@@ -17,7 +17,7 @@ class Item extends Component {
   getArtwork = (id) => {
     const uri = endpoint + id;
     fetch(uri, {
-      headers : {
+      headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
@@ -34,22 +34,26 @@ class Item extends Component {
   }
 
   componentDidMount() {
-    const { params: { id } } = this.props.match;
+    const {params: {id}} = this.props.match;
     this.getArtwork(id);
   }
 
   render() {
     if (this.state.response) {
       const {id, title, artist_display, thumbnail, image_id} = this.state.response;
-      console.log(this.state.response)
       return (
-        <div className="content">
+        <main className="item" id={`item-${id}`}>
           <Link to="/">Back to Search</Link>
           <Figure alt={thumbnail.alt_text}
-                   placeholder={thumbnail.lqip}
-                   image_id={image_id}
-                   size="!1200,1200" />
-        </div>
+                  placeholder={thumbnail.lqip}
+                  image_id={image_id}
+                  size="!1000,1000"/>
+          <h1>{title}</h1>
+          <span>{artist_display}</span>
+          <div className="metadata">
+            ...metadata
+          </div>
+        </main>
       );
     } else {
       return (

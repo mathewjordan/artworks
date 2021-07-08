@@ -60,11 +60,9 @@ class Results extends Component {
   render() {
     if (this.state.response) {
       return (
-        <>
-          <div className="results">
-            {this.mapCards(this.state.response.data)}
-          </div>
-        </>
+        <main className="results">
+          {this.mapCards(this.state.response.data)}
+        </main>
       );
     } else {
       return (

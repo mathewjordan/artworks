@@ -1,0 +1,23 @@
+@mixin respond-to-breakpoints($media) {
+  @if $media == xxs {
+    @media (max-width: 37.5em) { @content; }
+  }
+  @if $media == xs {
+    @media (max-width: 50em) { @content; }
+  }
+  @if $media == sm {
+    @media (max-width: 64em) { @content; }
+  }
+  @if $media == md {
+    @media (max-width: 70em) { @content; }
+  }
+  @if $media == lg {
+    @media (min-width: 70em) { @content; }
+  }
+}
+
+@mixin breakpoints($media...) {
+  @each $mediatype in $media {
+    @include respond-to-breakpoints($mediatype) { @content; }
+  }
+}

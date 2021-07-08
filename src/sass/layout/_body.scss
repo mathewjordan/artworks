@@ -1,0 +1,17 @@
+html {
+  font-family: $sans;
+  font-size: 15px;
+}
+
+body {
+  font-size: 1em;
+  margin: 0 auto;
+  word-wrap: break-word;
+  font-kerning: normal;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";
+}
