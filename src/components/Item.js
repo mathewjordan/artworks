@@ -39,9 +39,9 @@ class Item extends Component {
     if (value) {
       return (
         <span>
-        <dt>{key}</dt>
-        <dd>{value}</dd>
-      </span>
+          <dt>{key}</dt>
+          <dd>{value}</dd>
+        </span>
       )
     }
   }
