@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const endpoint = 'https://api.artic.edu/api/v1/artworks/search?query[term][is_public_domain]=true';
 const fields = 'id,title,artist_display,thumbnail,image_id';
-const limit = 12;
+const limit = 20;
 
 class Results extends Component {
   constructor(props) {
@@ -12,7 +12,8 @@ class Results extends Component {
     this.state ={
       query: null,
       response: [],
-      page: 1
+      fetching: 0,
+      page: 1,
     }
   }
 
@@ -47,12 +48,14 @@ class Results extends Component {
               total: data.pagination.total,
               response: data.data,
               query: this.props.query,
-              previousPage: page
+              previousPage: page,
+              fetch: 0
             });
           } else {
             this.setState({
               response: [...this.state.response,...data.data],
-              previousPage: page
+              previousPage: page,
+              fetch: 0
             });
           }
         })
@@ -61,11 +64,14 @@ class Results extends Component {
   }
 
   infiniteScroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+    let scrollLocation = window.innerHeight + document.documentElement.scrollTop;
+    let height = document.documentElement.offsetHeight - 750;
+    if ((scrollLocation >= height) && this.state.fetch === 0) {
       let nextPage = this.state.page;
       nextPage++;
 
       this.setState({
+        fetch: 1,
         page: nextPage
       });
     }
