@@ -48,7 +48,8 @@ class Results extends Component {
               total: data.pagination.total,
               response: data.data,
               query: this.props.query,
-              previousPage: page,
+              page: 0,
+              previousPage: null,
               fetch: 0
             });
           } else {
