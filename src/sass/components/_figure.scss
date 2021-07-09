@@ -20,8 +20,8 @@ figure {
     object-fit: cover;
     position: relative;
     z-index: 1;
-    color: white;
     transition: $transition;
+    color: transparent;
   }
 
   span.placeholder {
