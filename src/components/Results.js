@@ -12,7 +12,7 @@ class Results extends Component {
     this.state ={
       query: null,
       response: [],
-      page: 0
+      page: 1
     }
   }
 
