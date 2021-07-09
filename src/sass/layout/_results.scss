@@ -8,11 +8,21 @@ main.results {
   > span {
     font-weight: 700;
     padding: 1.5em;
+
+    @include breakpoints(xs) {
+      display: block;
+      padding: 1em 1.5em;
+    }
   }
 
   .items {
     display: flex;
     flex-wrap: wrap;
+
+    @include breakpoints(xs) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
   }
 
   a.card,
@@ -34,12 +44,30 @@ main.results {
 
     @include breakpoints(xs) {
       width: calc(100%);
-      margin: 0;
+      margin: 0 0 1em;
     }
 
     figure {
       display: flex;
       flex-direction: column;
+
+      @include breakpoints(xs) {
+        flex-direction: row;
+        padding: 0 1.5em;
+
+        > div {
+          height: auto;
+          width: 75px !important;
+          height: 75px  !important;
+          padding-bottom: 0 !important;
+          flex-shrink: 0;
+        }
+
+        img {
+          width: 75px;
+          height: 75px;
+        }
+      }
 
       figcaption {
         margin-top: 1em;
@@ -48,6 +76,7 @@ main.results {
 
         @include breakpoints(xs) {
           padding: 0.5em 1em 2em;
+          margin-top: -0.5em;
         }
 
         span {
