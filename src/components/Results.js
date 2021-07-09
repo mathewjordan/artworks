@@ -30,7 +30,11 @@ class Results extends Component {
   getArtworks = (page) => {
     const {query, previousPage} = this.state;
     if((query !== this.props.query) || (page !== previousPage)) {
-      let uri = endpoint + '&fields=' + fields + '&limit=' + limit + '&page=' + page;
+      let fetchPage = page;
+      if (query !== this.props.query) {
+        fetchPage = 1;
+      }
+      let uri = endpoint + '&fields=' + fields + '&limit=' + limit + '&page=' + fetchPage;
       if (this.props.query !== '') {
         uri = uri + '&q=' + this.props.query;
       }
@@ -43,13 +47,12 @@ class Results extends Component {
         .then(response => response.json())
         .then(data => {
           if(query !== this.props.query) {
-            console.log(data)
             this.setState({
               total: data.pagination.total,
               response: data.data,
               query: this.props.query,
-              page: 0,
-              previousPage: null,
+              page: fetchPage,
+              previousPage: fetchPage,
               fetch: 0
             });
           } else {
