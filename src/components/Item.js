@@ -68,7 +68,7 @@ class Item extends Component {
             <Figure alt={thumbnail.alt_text}
                     placeholder={thumbnail.lqip}
                     image_id={image_id}
-                    size="!1000,1000"
+                    size="843,"
                     ratio={100 / 61.8}/>
             <Viewer id={id} active={this.state.viewer} />
           </div>
